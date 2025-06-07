@@ -15,15 +15,19 @@
 
 body {
   background: var(--background);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .quote-box {
   background: var(--qb-background);
   width: 700px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: static; /* Remove absolute positioning */
+  top: unset;
+  left: unset;
+  transform: none;
   padding: 40px;
   border-radius: 10px;
   text-align: center;
@@ -117,4 +121,52 @@ body {
   background: rgba(67, 133, 133, 0.679);
   color: #333;
   text-shadow: 1px 1px 1px rgba(255, 217, 0, 0.462);
+}
+
+@media screen and (max-width: 900px) {
+  .quote-box {
+    width: 90vw;
+    padding: 30px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .quote-box {
+    width: 98vw;
+    padding: 15px;
+    font-size: 1rem;
+  }
+  .quote-box h2 {
+    font-size: 1.5rem;
+  }
+  .quote-box blockquote {
+    font-size: 1.1rem;
+    min-height: 60px;
+  }
+  .quote-box div {
+    margin: 20px 0;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .quote-box button {
+    width: 100%;
+    min-width: 0;
+    font-size: 1rem;
+  }
+  .quote-box span {
+    float: none;
+    text-align: right;
+    margin-top: 10px;
+    position: relative;
+  }
+  .quote-box span::before {
+    position: static;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+    width: 20px;
+    height: 2px;
+    background: rgb(23, 124, 229);
+    content: "";
+  }
 }
